@@ -1,0 +1,28 @@
+#root {
+  max-width: 1400px;
+  margin: 0 ;
+  padding: 2rem;
+}
+
+header{
+  display:flex;
+}
+.tr {
+  margin:0;
+  opacity:0.8;
+  border-right: 5px solid;
+  width:100%;
+  white-space: nowrap;
+  overflow:hidden;
+  animation:
+    typing 2s steps(18), step-end infinite;
+}
+
+@keyframes typing{
+  from {width:0}
+}
+
+a{
+  color:rgba(255, 255, 255, 0.87);
+  text-decoration: none;
+}
