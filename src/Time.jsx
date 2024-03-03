@@ -23,7 +23,7 @@ const Time = () => {
 
   return (
     <div>
-      <h1>time in my city:</h1>
+      <h2>time in my city:</h2>
       <p>{currentTime}</p>
     </div>
   );
