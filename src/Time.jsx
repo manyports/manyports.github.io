@@ -16,7 +16,6 @@ const Time = () => {
     };
 
     fetchTime();
-
     const intervalId = setInterval(fetchTime, 1000);
 
     return () => clearInterval(intervalId);
@@ -24,7 +23,7 @@ const Time = () => {
 
   return (
     <div>
-      <h1>time in my city:</h1>
+      <h1>Current Time in Astana:</h1>
       <p>{currentTime}</p>
     </div>
   );
