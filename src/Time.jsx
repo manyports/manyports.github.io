@@ -6,7 +6,7 @@ const Time = () => {
   useEffect(() => {
     const fetchTime = async () => {
       try {
-        const response = await fetch('http://worldtimeapi.org/api/timezone/Asia/Almaty');
+        const response = await fetch('https://worldtimeapi.org/api/timezone/Asia/Almaty');
         const data = await response.json();
         const astanaTime = new Date(data.utc_datetime);
         setCurrentTime(astanaTime.toLocaleTimeString());
@@ -16,14 +16,16 @@ const Time = () => {
     };
 
     fetchTime();
+
     const intervalId = setInterval(fetchTime, 1000);
+
     return () => clearInterval(intervalId);
   }, []);
 
   return (
     <div>
-      <h2>time in my city:</h2>
-      <p>: {currentTime}</p>
+      <h1>time in my city:</h1>
+      <p>{currentTime}</p>
     </div>
   );
 };
