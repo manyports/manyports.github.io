@@ -1,32 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react'
 
 const Time = () => {
-  const [currentTime, setCurrentTime] = useState('');
+  const [currentTime, setCurrentTime] = useState('')
 
   useEffect(() => {
-    const fetchTime = async () => {
-      try {
-        const response = await fetch('https://worldtimeapi.org/api/timezone/Asia/Almaty');
-        const data = await response.json();
-        const astanaTime = new Date(data.utc_datetime);
-        setCurrentTime(astanaTime.toLocaleTimeString());
-      } catch (error) {
-        console.error('Error fetching time:', error);
-      }
-    };
+    const interval = setInterval(() => {
+      const currentDate = new Date(new Date().getTime() + 5 * 60 * 60 * 1000)
 
-    fetchTime();
-    const intervalId = setInterval(fetchTime, 1000);
+      const hours = currentDate.getUTCHours().toString().padStart(2, '0')
+      const minutes = currentDate.getUTCMinutes().toString().padStart(2, '0')
+      const seconds = currentDate.getUTCSeconds().toString().padStart(2, '0')
 
-    return () => clearInterval(intervalId);
-  }, []);
+      const formattedTime = `${hours}:${minutes}:${seconds}`
+
+      setCurrentTime(formattedTime)
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div>
       <h2>time in my city:</h2>
       <p>{currentTime}</p>
     </div>
-  );
-};
+  )
+}
 
-export default Time;
+export default Time
